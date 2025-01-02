@@ -1,0 +1,33 @@
+'''create a stack with functionality of operation (push,pop),fetch the value of top and min element '''
+class minstack:
+  def __init__(self):
+    self.stack = []
+    self.min_stack = []
+  def push(self,ele):
+    #write the logic
+    self.stack.append(ele)
+    #update the min stack
+    if not self.min_stack or ele<=self.min_stack[-1]:
+      self.min_stack.append(ele)
+    
+  
+  def pop(self):
+    if not self.stack:
+      return"stack is empty"
+    pop = self.stack.pop()
+    
+  def top(self):
+    return self.min_stack[-1]
+    
+    
+  def min(self):
+    return self.min_stack[-1]
+res = minstack()
+res.push(2)
+res.push(5)
+res.push(7)
+print("top element is:",res.top())
+print("minium element is:",res.min())
+res.pop()
+print("top element is:",res.top())
+print("minium element is:",res.min())

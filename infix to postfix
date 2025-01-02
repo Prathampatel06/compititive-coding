@@ -1,0 +1,30 @@
+def precedence(oper):
+  if oper =='+' or oper  =='-':
+    return 1 
+  if oper =='+' or oper  =='/':
+    return 2
+  if oper =='^':
+    return 3
+  return 0
+def is_operator(c):
+  return c in {'+','-','*','/','^'}
+def convert(exp):
+  stack = []
+  post_stack = []
+  for i in exp:
+    # TODO: write code...r i in exp:
+    if i.isalnum():
+      post_stack.append(i)
+    elif is_operator(i):
+      while stack and precedence(stack[-1])>= precedence(i):
+        post_stack.append(stack.pop())
+      stack.append(i)
+      
+  while stack:
+    post_stack.append(stack.pop())
+  return" ".join(post_stack)
+  
+expression = "a*b+c*d"
+postfix = convert(expression)
+print("infix expression:",expression)
+print("postfix expression:",postfix)
